@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#060114">
+  <title>Ema’s Magical Birthday</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Canvas Background for Particles -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  
+  <div class="top-controls">
+    <button id="musicToggle" class="music-control is-on" type="button" aria-label="Sound off">
+      <span class="music-icon">♫</span> <span>সাউন্ড বন্ধ</span>
+    </button>
+  </div>
+
+  <main id="app">
+    <!-- Scene 1: Opening -->
+    <section class="scene active" id="opening" aria-label="জন্মদিনের উপহার">
+      <div class="scene-inner opening-inner">
+        <div class="eyebrow"><i></i> A LITTLE MAGIC FOR YOU <i></i></div>
+        <h1 class="opening-title bengali">একটি বিশেষ মানুষের জন্য,<br>একটি বিশেষ সারপ্রাইজ! <span class="heart-pulse">♡</span></h1>
+        <p class="subline bengali">প্রিয় Ema, তোমার জন্য ছোট্ট একটি উপহার!</p>
+        
+        <div class="gift-wrap" id="firstGift" aria-hidden="true">
+          <div class="magic-circle"></div>
+          <div class="gift-halo"></div>
+          <div class="gift-box">
+            <div class="gift-lid"><span class="bow bow-left"></span><span class="bow bow-right"></span><span class="bow-knot"></span></div>
+            <div class="gift-body"><span class="gift-ribbon-v"></span><span class="gift-ribbon-h"></span><span class="box-glow"></span></div>
+          </div>
+        </div>
+        
+        <button class="lux-button bengali" id="openGift" type="button">
+          <span class="btn-icon">🎁</span> উপহারটি খুলে দেখো
+        </button>
+        <div class="tiny-note">MADE WITH LOVE · JUST FOR EMA</div>
+      </div>
+    </section>
+
+    <!-- Scene 2: Name Reveal -->
+    <section class="scene reveal-scene" id="nameReveal" aria-label="নাম প্রকাশ">
+      <div class="scene-inner reveal-inner">
+        <div class="beam"></div>
+        <div class="reveal-kicker bengali">এই গল্পের সবচেয়ে সুন্দর নাম</div>
+        <div class="letter-stage" id="letterStage">
+          <div class="first-name letters bengali" id="firstName"></div>
+          <div class="last-name letters bengali" id="lastName"></div>
+          <div class="full-name" id="fullName">EMA SARKAR</div>
+        </div>
+        <div class="name-rule"></div>
+        <p class="reveal-line bengali">আজকের দিনটি শুধু তোমার! <span class="heart-pulse">❤️</span></p>
+        <p class="reveal-birthday bengali">শুভ জন্মদিন, ইমা! <span>🎂</span></p>
+        <div class="reveal-count">A DAY AS RADIANT AS YOU</div>
+      </div>
+    </section>
+
+    <!-- Scene 3: Cards -->
+    <section class="scene cards-scene" id="cardsScene" aria-label="জন্মদিনের সারপ্রাইজ কার্ড">
+      <div class="scene-inner card-inner">
+        <div class="card-topline"><span class="mini-star">✦</span> A NOTE FOR EMA <span class="mini-star">✦</span></div>
+        <article class="surprise-card tilt-card" id="surpriseCard">
+          <div class="card-orb" aria-hidden="true"></div>
+          <div class="card-content">
+            <div class="card-index" id="cardIndex">01 <span>—</span> 05</div>
+            <h2 class="bengali" id="cardTitle"></h2>
+            <div class="title-ornament">✧ &nbsp; ✦ &nbsp; ✧</div>
+            <p class="poem bengali" id="cardText"></p>
+          </div>
+        </article>
+        <div class="card-bottom">
+          <div class="progress-dots" id="progressDots" aria-label="কার্ডের অগ্রগতি"></div>
+          <button class="lux-button next-button bengali" id="nextCard" type="button">পরের সারপ্রাইজ দেখো <span class="btn-icon">✨</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 4: Cake -->
+    <section class="scene cake-scene" id="cakeScene" aria-label="জন্মদিনের কেক">
+      <div class="scene-inner cake-inner">
+        
+        <div class="cake-header">
+          <div class="card-topline"><span class="mini-star">✦</span> THE WISHING MOMENT <span class="mini-star">✦</span></div>
+          <h2 class="scene-heading bengali">এবার তোমার জন্মদিনের কেক! <span>🎂</span></h2>
+          <p class="scene-subheading bengali">চোখ বন্ধ করে একটি সুন্দর ইচ্ছা করো, ইমা!</p>
+        </div>
+
+        <div class="cake-wrapper">
+          <div class="cake-display" id="cakeDisplay">
+            <div class="cake-sparkle sparkle-a">✦</div><div class="cake-sparkle sparkle-b">✧</div><div class="cake-sparkle sparkle-c">✦</div>
+            <div class="cake-topper">Happy Birthday</div>
+            
+            <div class="candles" id="candles" aria-label="জ্বলন্ত মোমবাতি">
+              <div class="candle c1"><i class="flame"></i><i class="smoke"></i><div class="candle-glow"></div></div>
+              <div class="candle c2"><i class="flame"></i><i class="smoke"></i><div class="candle-glow"></div></div>
+              <div class="candle c3"><i class="flame"></i><i class="smoke"></i><div class="candle-glow"></div></div>
+              <div class="candle c4"><i class="flame"></i><i class="smoke"></i><div class="candle-glow"></div></div>
+              <div class="candle c5"><i class="flame"></i><i class="smoke"></i><div class="candle-glow"></div></div>
+            </div>
+            
+            <div class="cake-tier tier-top"><div class="icing drip-top"></div><div class="tier-decor">✿　✧　✿</div></div>
+            <div class="cake-tier tier-mid"><div class="icing drip-mid"></div><div class="cake-name">EMA</div><div class="rose-decor">✿ <span>✧</span> ✿</div></div>
+            <div class="cake-tier tier-bottom"><div class="icing drip-bottom"></div><div class="cake-beads">◦　✦　◦　✦　◦</div></div>
+            <div class="cake-plate"></div>
+          </div>
+        </div>
+        
+        <div class="cake-footer">
+          <div class="countdown bengali" id="countdown" aria-live="polite"></div>
+          <button class="lux-button bengali" id="blowCandles" type="button">মোমবাতিগুলো নিভিয়ে দাও <span class="btn-icon">💨</span></button>
+          <p class="wish-message bengali" id="wishMessage">তোমার সব সুন্দর ইচ্ছা পূরণ হোক! <span class="heart-pulse">❤️</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 5: Finale -->
+    <section class="scene finale-scene" id="finaleScene" aria-label="শেষ উপহার">
+      <div class="scene-inner finale-inner">
+        <div class="card-topline"><span class="mini-star">✦</span> ONE LAST LITTLE SURPRISE <span class="mini-star">✦</span></div>
+        <h2 class="scene-heading bengali final-intro">ইমা, তোমার জন্য শেষ একটি উপহার! <span>🎁</span></h2>
+        
+        <div class="final-gift-wrap" id="finalGift" aria-hidden="true">
+          <div class="final-heart">♥</div>
+          <div class="gift-box final-box">
+            <div class="gift-lid"><span class="bow bow-left"></span><span class="bow bow-right"></span><span class="bow-knot"></span></div>
+            <div class="gift-body"><span class="gift-ribbon-v"></span><span class="gift-ribbon-h"></span><span class="box-glow"></span></div>
+          </div>
+        </div>
+        
+        <button class="lux-button bengali" id="openFinal" type="button">গিফটটি খুলে দেখো <span class="btn-icon">✨</span></button>
+        
+        <div class="final-message tilt-card" id="finalMessage" aria-live="polite">
+          <div class="card-content">
+            <!-- FIX: Android text clip emoji glitch solved -->
+            <div class="final-name-wrap">
+              <h2>EMA SARKAR</h2>
+              <span class="final-heart-emoji">❤️</span>
+            </div>
+            
+            <div class="final-divider">✧ ───── ✦ ───── ✧</div>
+            <p class="bengali">তোমার জীবনের প্রতিটি দিন<br>হোক আজকের মতোই সুন্দর।<br><br>হাসিতে ভরে উঠুক প্রতিটি সকাল,<br>স্বপ্নগুলো পূরণ হোক একে একে।<br><br>সুখ, শান্তি, ভালোবাসা আর সফলতায়<br>ভরে উঠুক তোমার পুরো পৃথিবী।<br><br>শুভ জন্মদিন, ইমা! 🎂❤️</p>
+            <button class="replay-button bengali" id="replay" type="button">আবার শুরু থেকে ↺</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <script type="module" src="script.js"></script>
+</body>
+</html>
